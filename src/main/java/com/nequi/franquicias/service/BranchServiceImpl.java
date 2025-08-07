@@ -32,10 +32,10 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public BranchResponse updateBranchName(Long branchId, String newName) {
+    public BranchResponse updateBranchName(Long branchId, BranchRequest newName) {
         Branch branch = branchRepository.findById(branchId)
                 .orElseThrow(() -> new RuntimeException("Branch not found"));
-        branch.setName(newName);
+        branch.setName(newName.getName());
         Branch updatedBranch = branchRepository.save(branch);
         return branchMapper.toResponse(updatedBranch);
     }

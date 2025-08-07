@@ -5,5 +5,6 @@ import com.nequi.franquicias.dto.FranchiseResponse;
 
 public interface FranchiseService {
     FranchiseResponse createFranchise(FranchiseRequest franchiseRequest);
-    FranchiseResponse updateFranchiseName(Long id, String newName);
+
+    FranchiseResponse updateFranchiseName(Long id, FranchiseRequest newName);
 }

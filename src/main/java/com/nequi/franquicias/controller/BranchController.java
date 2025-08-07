@@ -24,7 +24,7 @@ public class BranchController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BranchResponse> updateBranchName(@PathVariable Long id, @RequestBody String newName) {
+    public ResponseEntity<BranchResponse> updateBranchName(@PathVariable Long id, @RequestBody BranchRequest newName) {
         BranchResponse response = branchService.updateBranchName(id, newName);
         return ResponseEntity.ok(response);
     }

@@ -26,10 +26,10 @@ public class FranchiseServiceImpl implements FranchiseService {
     }
 
     @Override
-    public FranchiseResponse updateFranchiseName(Long id, String newName) {
+    public FranchiseResponse updateFranchiseName(Long id, FranchiseRequest newName) {
         Franchise franchise = franchiseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Franchise not found"));
-        franchise.setName(newName);
+        franchise.setName(newName.getName());
         Franchise updatedFranchise = franchiseRepository.save(franchise);
         return franchiseMapper.toResponse(updatedFranchise);
     }

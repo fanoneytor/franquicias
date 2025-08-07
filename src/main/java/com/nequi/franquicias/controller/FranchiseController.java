@@ -24,7 +24,7 @@ public class FranchiseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FranchiseResponse> updateFranchiseName(@PathVariable Long id, @RequestBody String newName) {
+    public ResponseEntity<FranchiseResponse> updateFranchiseName(@PathVariable Long id, @RequestBody FranchiseRequest newName) {
         FranchiseResponse response = franchiseService.updateFranchiseName(id, newName);
         return ResponseEntity.ok(response);
     }

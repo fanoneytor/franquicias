@@ -74,13 +74,9 @@ public class ProductServiceImpl implements ProductService {
         List<ProductWithBranchInfoResponse> result = new ArrayList<>();
 
         for (Branch branch : franchise.getBranches()) {
-            Product productWithMostStock = branch.getProducts().stream()
-                    .max(Comparator.comparingInt(Product::getStock))
-                    .orElse(null);
+            branch.getProducts().stream()
+                    .max(Comparator.comparingInt(Product::getStock)).ifPresent(productWithMostStock -> result.add(productMapper.toProductWithBranchInfoResponse(productWithMostStock, branch)));
 
-            if (productWithMostStock != null) {
-                result.add(productMapper.toProductWithBranchInfoResponse(productWithMostStock, branch));
-            }
         }
         return result;
     }

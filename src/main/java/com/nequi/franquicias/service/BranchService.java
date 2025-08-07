@@ -6,5 +6,5 @@ import com.nequi.franquicias.dto.BranchResponse;
 public interface BranchService {
     BranchResponse addBranchToFranchise(BranchRequest branchRequest);
 
-    BranchResponse updateBranchName(Long branchId, String newName);
+    BranchResponse updateBranchName(Long branchId, BranchRequest newName);
 }
