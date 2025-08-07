@@ -1,7 +1,7 @@
 package com.nequi.franquicias.mapper;
 
-import com.nequi.franquicias.controller.dto.BranchRequest;
-import com.nequi.franquicias.controller.dto.BranchResponse;
+import com.nequi.franquicias.dto.BranchRequest;
+import com.nequi.franquicias.dto.BranchResponse;
 import com.nequi.franquicias.model.Branch;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

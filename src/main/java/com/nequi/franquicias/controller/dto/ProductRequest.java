@@ -3,8 +3,8 @@ package com.nequi.franquicias.controller.dto;
 import lombok.Data;
 
 @Data
-public class BranchResponse {
-    private Long id;
+public class ProductRequest {
     private String name;
-    private Long franchiseId;
+    private Integer stock;
+    private Long branchId;
 }

@@ -1,7 +1,7 @@
 package com.nequi.franquicias.controller;
 
-import com.nequi.franquicias.controller.dto.FranchiseRequest;
-import com.nequi.franquicias.controller.dto.FranchiseResponse;
+import com.nequi.franquicias.dto.FranchiseRequest;
+import com.nequi.franquicias.dto.FranchiseResponse;
 import com.nequi.franquicias.service.FranchiseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

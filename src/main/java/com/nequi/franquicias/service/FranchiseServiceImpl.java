@@ -1,7 +1,7 @@
 package com.nequi.franquicias.service;
 
-import com.nequi.franquicias.controller.dto.FranchiseRequest;
-import com.nequi.franquicias.controller.dto.FranchiseResponse;
+import com.nequi.franquicias.dto.FranchiseRequest;
+import com.nequi.franquicias.dto.FranchiseResponse;
 import com.nequi.franquicias.mapper.FranchiseMapper;
 import com.nequi.franquicias.model.Franchise;
 import com.nequi.franquicias.repository.FranchiseRepository;

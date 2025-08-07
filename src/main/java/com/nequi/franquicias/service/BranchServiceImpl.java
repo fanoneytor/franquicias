@@ -1,7 +1,7 @@
 package com.nequi.franquicias.service;
 
-import com.nequi.franquicias.controller.dto.BranchRequest;
-import com.nequi.franquicias.controller.dto.BranchResponse;
+import com.nequi.franquicias.dto.BranchRequest;
+import com.nequi.franquicias.dto.BranchResponse;
 import com.nequi.franquicias.mapper.BranchMapper;
 import com.nequi.franquicias.model.Branch;
 import com.nequi.franquicias.model.Franchise;
@@ -22,8 +22,8 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public BranchResponse createBranch(Long franchiseId, BranchRequest branchRequest) {
-        Franchise franchise = franchiseRepository.findById(franchiseId)
+    public BranchResponse addBranchToFranchise(BranchRequest branchRequest) {
+        Franchise franchise = franchiseRepository.findById(branchRequest.getFranchiseId())
                 .orElseThrow(() -> new RuntimeException("Franchise not found"));
         Branch branch = branchMapper.toEntity(branchRequest);
         branch.setFranchise(franchise);

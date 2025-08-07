@@ -1,4 +1,4 @@
-package com.nequi.franquicias.controller.dto;
+package com.nequi.franquicias.dto;
 
 import lombok.Data;
 

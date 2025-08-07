@@ -1,7 +1,7 @@
 package com.nequi.franquicias.controller;
 
-import com.nequi.franquicias.controller.dto.BranchRequest;
-import com.nequi.franquicias.controller.dto.BranchResponse;
+import com.nequi.franquicias.dto.BranchRequest;
+import com.nequi.franquicias.dto.BranchResponse;
 import com.nequi.franquicias.service.BranchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,9 @@ public class BranchController {
         this.branchService = branchService;
     }
 
-    @PostMapping("/franchise/{franchiseId}")
-    public ResponseEntity<BranchResponse> createBranch(@PathVariable Long franchiseId, @RequestBody BranchRequest branchRequest) {
-        BranchResponse response = branchService.createBranch(franchiseId, branchRequest);
+    @PostMapping()
+    public ResponseEntity<BranchResponse> addBranchToFranchise(@RequestBody BranchRequest branchRequest) {
+        BranchResponse response = branchService.addBranchToFranchise(branchRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

@@ -1,7 +1,7 @@
 package com.nequi.franquicias.service;
 
-import com.nequi.franquicias.controller.dto.FranchiseRequest;
-import com.nequi.franquicias.controller.dto.FranchiseResponse;
+import com.nequi.franquicias.dto.FranchiseRequest;
+import com.nequi.franquicias.dto.FranchiseResponse;
 
 public interface FranchiseService {
     FranchiseResponse createFranchise(FranchiseRequest franchiseRequest);
