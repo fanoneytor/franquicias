@@ -14,5 +14,7 @@ public interface ProductService {
 
     void deleteProductFromBranch(Long productId);
 
+    ProductResponse updateProductName(Long productId, String newName);
+
     List<ProductWithBranchInfoResponse> getProductsWithMostStockPerBranchForFranchise(Long franchiseId);
 }

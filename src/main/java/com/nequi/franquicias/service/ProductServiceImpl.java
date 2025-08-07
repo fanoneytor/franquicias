@@ -58,6 +58,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductResponse updateProductName(Long productId, String newName) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+        product.setName(newName);
+        Product updatedProduct = productRepository.save(product);
+        return productMapper.toDto(updatedProduct);
+    }
+
+    @Override
     public List<ProductWithBranchInfoResponse> getProductsWithMostStockPerBranchForFranchise(Long franchiseId) {
         Franchise franchise = franchiseRepository.findById(franchiseId)
                 .orElseThrow(() -> new RuntimeException("Franchise not found"));
