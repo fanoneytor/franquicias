@@ -2,11 +2,14 @@ package com.nequi.franquicias.controller;
 
 import com.nequi.franquicias.controller.dto.ProductRequest;
 import com.nequi.franquicias.controller.dto.ProductResponse;
+import com.nequi.franquicias.controller.dto.ProductWithBranchInfoResponse;
 import com.nequi.franquicias.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
@@ -36,4 +39,11 @@ public class ProductController {
         productService.deleteProductFromBranch(productId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/most-stock-per-branch/franchise/{franchiseId}")
+    public ResponseEntity<List<ProductWithBranchInfoResponse>> getProductsWithMostStockPerBranchForFranchise(@PathVariable Long franchiseId) {
+        List<ProductWithBranchInfoResponse> products = productService.getProductsWithMostStockPerBranchForFranchise(franchiseId);
+        return ResponseEntity.ok(products);
+    }
+
 }
