@@ -1,8 +1,11 @@
 package com.nequi.franquicias.controller;
 
+import com.nequi.franquicias.controller.dto.FranchiseRequest;
+import com.nequi.franquicias.controller.dto.FranchiseResponse;
 import com.nequi.franquicias.service.FranchiseService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/franchises")
@@ -14,5 +17,15 @@ public class FranchiseController {
         this.franchiseService = franchiseService;
     }
 
+    @PostMapping
+    public ResponseEntity<FranchiseResponse> createFranchise(@RequestBody FranchiseRequest franchiseRequest) {
+        FranchiseResponse response = franchiseService.createFranchise(franchiseRequest);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<FranchiseResponse> updateFranchiseName(@PathVariable Long id, @RequestBody String newName) {
+        FranchiseResponse response = franchiseService.updateFranchiseName(id, newName);
+        return ResponseEntity.ok(response);
+    }
 }
