@@ -71,13 +71,12 @@ public class ProductServiceImpl implements ProductService {
         Franchise franchise = franchiseRepository.findById(franchiseId)
                 .orElseThrow(() -> new RuntimeException("Franchise not found"));
 
-        List<ProductWithBranchInfoResponse> result = new ArrayList<>();
-
-        for (Branch branch : franchise.getBranches()) {
-            branch.getProducts().stream()
-                    .max(Comparator.comparingInt(Product::getStock)).ifPresent(productWithMostStock -> result.add(productMapper.toProductWithBranchInfoResponse(productWithMostStock, branch)));
-
-        }
-        return result;
+        return franchise.getBranches().stream()
+                .map(branch -> branch.getProducts().stream()
+                        .max(Comparator.comparingInt(Product::getStock))
+                        .map(productWithMostStock -> productMapper.toProductWithBranchInfoResponse(productWithMostStock, branch)))
+                .filter(java.util.Optional::isPresent)
+                .map(java.util.Optional::get)
+                .collect(java.util.stream.Collectors.toList());
     }
 }
